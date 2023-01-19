@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.express as px
 from sklearn import metrics
 from sklearn.linear_model import LogisticRegression
 from sklearn.impute import SimpleImputer
@@ -49,3 +50,10 @@ for plotIndex,wrong in enumerate(misclassifiedIndex[0:4]):
     print(plt.subplot(1,4,plotIndex+1))
     print(plt.imshow(np.reshape(X_test[wrong],(8,8)),cmap=plt.cm.gray))
     print(plt.title("Predicted: {},Actual:{}".format(preds[wrong],y_test[wrong]),fontsize=20))
+
+
+sns.set_style('darkgrid')
+matplotlib.rcParams['font.size'] = 14
+matplotlib.rcParams['figure.figsize'] = (10, 6)
+matplotlib.rcParams['figure.facecolor'] = '#00000000'
+px.histogram(Heart_Attack, x='chol', title='cholesterol vs. Heart Attack', color='RainToday')
